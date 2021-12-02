@@ -57,8 +57,9 @@ def weather(query):
         location = "indore"
 
     speak(f"{location}")
-
-    api = "http://api.openweathermap.org/data/2.5/weather?q="+ location +"&appid=3e0cd0cfdf7135a53bf72064bdad403f"
+    
+    API_KEY = 'API_KEY'
+    api = "http://api.openweathermap.org/data/2.5/weather?q="+ location +f"&appid={API_KEY}"
     api_request = requests.get(api)
     data = json.loads(api_request.content)
     id = data['cod']
