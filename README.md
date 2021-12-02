@@ -1,4 +1,4 @@
-# Iconia
-College minor project
+# Iconia - College minor project
 
-master - Main Branch
+# This project will listen to you and performs some of the following functions:
+
