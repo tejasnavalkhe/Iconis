@@ -35,8 +35,8 @@ def wishMe():
   name = socket.gethostname()
   hour = int(datetime.now(tz).hour)
   weather_api = "https://api.openweathermap.org/data/2.5/weather?"
-  API_KEY = 'b66ab67a44018d425129a91b93153744'
-  city = requests.get('https://api.ipdata.co?api-key=523d86e8b28465cfdec73bdfa72b2903e4a4449a0300ace673e7bb2e').json().get('city')
+  API_KEY = 'API'
+  city = requests.get(f'https://api.ipdata.co?api-key={API_KEY}').json().get('city')
   URL = weather_api + "q=" + city + f"&units=metric" + "&appid=" + API_KEY
   response = requests.get(URL)
   if response.status_code == 200:
