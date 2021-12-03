@@ -7,23 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-  <style>
-    #body {
-      background: #21a6da;
-      backdrop-filter: blur(20px);
-      padding: 12rem;
-    }
-
-    .fa-20x {
-      font-size: 20rem;
-    }
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='iconis.svg') }}" type="image/x-icon">
   <title>Iconis | Voice Assistant</title>
 </head>
 
 <body id="body">
-  <div onclick=record() style="display: flex; justify-content: center; align-items: center;">
-    <i class="fas fa-microphone-alt fa-20x"></i>
+  <div id="div">
+    <span id="mic">
+      <i class="fas fa-microphone-alt fa-20x" onclick=record() style="color: white;"></i>
+    </span>
+    <span id="on" class="disable">
+      <div class="dot blue"></div>
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+    </span>
   </div>
 
   <script>

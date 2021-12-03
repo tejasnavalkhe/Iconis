@@ -5,19 +5,17 @@ import json
 import pywhatkit as kit
 import json
 import webbrowser
-import datetime
 import pyautogui
 import time
 import psutil
-import os
-import smtplib
 import random
+import os
 import string
 from nsetools import Nse
 
 nse = Nse()
-
 Assistant = pyttsx3
+
 def speak(audio):
     speaking = Assistant.speak(audio)
     print(f": {audio}")
@@ -109,25 +107,13 @@ def tell_joke():
     speak(data['setup'])
     speak(data['delivery'])
 
-def sendEmail(to, content):
-    # Login Details
-    with open("login.json", "r") as login:
-        data = json.load(login)
-        email = data["email"]
-        password = data["password"]
-    server = smtplib.SMTP('smtp.zoho.in', 465)
-    server.ehlo()
-    server.starttls()
-    server.login(email, password)
-    server.sendmail(email, to, content)
-    server.close()
 
 def takescreenshot():
-    name = ''.join(random.choice(string.ascii_lowercase + string.ascii_lowercase + string.digits))
+    name = ''.join(random.choices(string.ascii_lowercase + string.ascii_uppercase, k=12))
     speak("please sir hold the screen, i am taking the screenshot")
     time.sleep(0.5)
     img = pyautogui.screenshot()
-    img.save(f"Iconis//screenshot//screenshot"+str(name)+".png")
+    img.save(f"screenshot//"+str(name)+".png")
     speak("screenshot is saved now in your main file")
 
 def cpu_ram_battery(query):
@@ -139,28 +125,36 @@ def cpu_ram_battery(query):
         # Getting % usage of virtual_memory ( 3rd field)
          speak('The RAM usage is '+ str(psutil.virtual_memory()[2]) + "%")
 
-    elif 'battery of laptop' in query:
+    elif ('battery of laptop' in query) or ('battery' in query) or ('battery of my laptop' in query):
         # returns a tuple
         battery = psutil.sensors_battery()
         speak(str(battery.percent) + " %  Battery is left" )
 
 def restart_shutdown_logout(query):
     if 'restart now' in query:
-        os.system("shutdown /r /t 1") # /r for restart and /t for time
+        speak("Do you want to restart")
+        result = takeCommand().lower()
+        if result == 'yes':
+            os.system("shutdown /r /t 1") # /r for restart and /t for time
+        else:
+            return
     
     elif 'shutdown now' in query:
-        os.system("shutdown /s /t 1") # /r for shutdown and /t for time
+        speak("Do you want to shutdown")
+        result = takeCommand().lower()
+        if result == 'yes':
+            os.system("shutdown /s /t 1") # /r for shutdown and /t for time
+        else:
+            return
     
     elif 'logout now' in query:
-        os.system("shutdown /l") # /l for logout and /t for time
+        speak("Do you want to logout")
+        result = takeCommand().lower()
+        if result == 'yes':
+            os.system("shutdown /l") # /l for logout and /t for time
+        else:
+            return
 
 
 def openwhatsapp():
     webbrowser.open('https://web.whatsapp.com/')
-
-def sendwhatsappmessage():
-    hour = int(datetime.datetime.now().hour)
-    min = int(datetime.datetime.now().minute)
-    # kit.sendwhatmsg("+918964849230", "message", hour, min+2)
-    kit.sendwhatmsg("+917264800601", "message", hour, min+2)
-
