@@ -7,3 +7,5 @@
 3. Search on wikipedia
 4. Open's some of the websites like YouTube, Facebook, Google, Stackoverflow
 5. Open Visual Code Editor for writing some codes.
+6. Tells Weather, Time
+7. Sends SMS
