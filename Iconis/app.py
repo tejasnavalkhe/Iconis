@@ -56,7 +56,7 @@ def main(query):
 
             if correct == 'yes':
                 url = "https://www.fast2sms.com/dev/bulkV2"
-                auth_code = "DTqFk4SUxBbXWzC0HcshwVvAy27P9LRrnI3poKN51fmOEQi6jZEfuFXCdqITYAOrc4R3y9H70PvVUQj6"
+                auth_code = "*********BbXWzC0Hcshw*******************OEQi6jZEfuFXCdq***************y9H70Pv******"
                 querystring = {"authorization":auth_code,"flash":0,"message":content,"language":"english","route":"q","numbers":f"{to}"}
                 headers = {
                 'cache-control': "no-cache"
@@ -77,7 +77,7 @@ def main(query):
     elif "open stackoverflow" in query:
         webbrowser.open("stackoverflow.com")
     elif "open code" in query:
-        code_path = "C:\\Users\\Tejas Navalkhe\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+        code_path = "C:\\Users\\Tejas\\AppData\\Public\\Programs\\Microsoft VS Code\\Code.exe"
         os.startfile(code_path)
     elif "price" in query: # of Tata Motors
         query = query.replace("price", "")
