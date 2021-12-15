@@ -71,7 +71,7 @@ def weather(query):
 
     speak(f"{location}")
 
-    api = "http://api.openweathermap.org/data/2.5/weather?q="+ location +"&appid=3e0cd0cfdf7135a53bf72064bdad403f"
+    api = "http://api.openweathermap.org/data/2.5/weather?q="+ location +"&appid=*e0********84jjTJjl64bd****ad403f"
     api_request = requests.get(api)
     data = json.loads(api_request.content)
     id = data['cod']
